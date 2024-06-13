@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { marked } from 'marked';
+	// import { marked } from 'marked';
 
 	let title = '';
 	let category = '';
@@ -61,7 +61,8 @@
 
 	<!-- Roles and Responsibilities -->
 	<div class="roles-and-responsibilities">
-		{@html marked(rolesAndResponsibilities)}
+		<!-- {@html marked(rolesAndResponsibilities)} -->
+		{rolesAndResponsibilities}
 	</div>
 
 	<!-- Location -->
@@ -74,3 +75,40 @@
 		<p>Date: {formatDate(date)}</p>
 	</div>
 </div>
+
+<style lang="scss">
+    body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    div {
+        &.date {
+            p {
+                color: #994f4f;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+        }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #444;
+    }
+
+    p {
+        line-height: 1.6em;
+    }
+
+    a {
+        color: #06c;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+</style>
