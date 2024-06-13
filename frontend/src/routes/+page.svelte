@@ -88,7 +88,7 @@
     div {
         &.date {
             p {
-                color: #994f4f;
+                color: #ff0000;
                 font-size: 1.2em;
                 font-weight: bold;
             }
