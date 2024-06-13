@@ -1,114 +1,642 @@
 <script>
-	import { onMount } from 'svelte';
-	// import { marked } from 'marked';
+	import JobPosting from '../lib/components/JobPosting.svelte';
+	</script>
 
-	let title = '';
-	let category = '';
-	let date = '';
-	let location = '';
-	let rolesAndResponsibilities = '';
-
-	try {
-		fetch('http://localhost:1337/api/jobs', {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		})
-			.then((response) => response.json())
-			.then((json_response) => {
-				const job = json_response.data[0];
-				const attributes = job.attributes;
-
-				title = attributes.Title;
-				category = attributes.Category;
-				date = attributes.Date;
-				location = attributes.Location;
-				rolesAndResponsibilities = attributes.Roles_and_Responsibilities;
-			});
-	} catch (error) {
-		console.log('Job API Error');
-		console.error(error);
-	}
-
-	function formatDate(dateString) {
-		// Parse the date string into a Date object
-		const date = new Date(dateString);
-
-		// Define options for toLocaleDateString
-		const options = { day: 'numeric', month: 'short', year: 'numeric' };
-
-		// Format the date using toLocaleDateString
-		return date.toLocaleDateString('en-GB', options);
-	}
-</script>
-
-<div class="container">
-	<!-- Title -->
-	<div class="title">
-		<h1>{title}</h1>
+<div id="splash-screen">
+	<div class="logo-container">
+		<!-- <img
+			src = "../lib/assets/acument_design/acument_design/logo/300ppi/Asset 5@300x.png"
+			alt="Company Logo"
+		/> -->
+		commented out
 	</div>
-
-	<!-- Apply Button -->
-	<div class="apply-button">
-		<a href="/apply">Apply</a>
-	</div>
-
-	<!-- Category -->
-	<div class="category">
-		<p>Category: {category}</p>
-	</div>
-
-	<!-- Roles and Responsibilities -->
-	<div class="roles-and-responsibilities">
-		<!-- {@html marked(rolesAndResponsibilities)} -->
-		{rolesAndResponsibilities}
-	</div>
-
-	<!-- Location -->
-	<div class="location">
-		<p>Location: {location}</p>
-	</div>
-
-	<!-- Date -->
-	<div class="date">
-		<p>Date: {formatDate(date)}</p>
+	<div class="gradient-screen">
+		<div class="gradient-part"></div>
+		<div class="gradient-part"></div>
+		<div class="gradient-part"></div>
+		<div class="gradient-part"></div>
+		<div class="gradient-part"></div>
+		<div class="gradient-part"></div>
 	</div>
 </div>
 
+<nav class="navbar is-spaced is-transparent">
+	<div class="navbar-brand">
+		<a href="#" class="navbar-item" id="brand-logo">
+			<!-- <img
+				src="../lib/assets/acument_design/acument_design/logo/300ppi/Asset 10@300x.png"
+				alt="Logo"
+				id="nav-logo"
+			/> -->
+			commented out
+		</a>
+	</div>
+	<div class="navbar-end" style="justify-content: flex-end">
+		<button class="btn navbar-button">Get in touch</button>
+	</div>
+</nav>
+
+<section class="hero is-small scroll-snap" style="padding: 0rem">
+	<div class="hero-body center-div">
+		<h1 class="hero-title text-center">Your path to</h1>
+		<h1 class="gradient-text hero-title bold text-center">Digital Excellence</h1>
+		<!-- <img
+			src="../lib/assets/acument_design/acument_design/images_for_website/AdobeStock_240945219.jpeg"
+			id="hero-img"
+			alt="Adobe Stock"
+		/> -->
+	</div>
+	<div class="text-container">
+		<div class="text-content">
+			<div class="about-us-container">
+				<div class="titles-container">
+					<h2>About Us</h2>
+					<h3>
+						IT Consulting and Sourcing Company specializing in digital, data, and engineering areas.
+					</h3>
+				</div>
+				<div class="description-container">
+					<p>
+						Originating from humble roots in Hong Kong, our boutique consultancy has since expanded
+						its presence to the vibrant city of Singapore. With a proven track record in Hong Kong,
+						we offer tailored solutions ranging from direct consultancy engagements to niche talent
+						sourcing, ensuring our clients' projects receive the attention and expertise they
+						deserve. Our team composes of delivery mindset individuals with extensive digital
+						product experience to offer invaluable insights and support to help drive our clients’
+						digital growth. With a hands-on approach and boots on the ground mentality, Acument is
+						known for our commitment to fast response and a customer-centric approach that puts our
+						clients' success at the forefront.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="origin-text">
+		Originating from humble roots in Hong Kong, our boutique consultancy has since expanded its
+		presence to the vibrant city of Singapore.
+	</div>
+	<br />
+	<button class="text-button btn">View Text</button>
+
+	<div class="modal" id="myModal">
+		<div class="modal-content">
+			<h2>ACUMENT GROUP: Your Path to Digital Excellence !</h2>
+			<br />
+			<p>
+				Originating from humble roots in Hong Kong, our boutique consultancy has since expanded its
+				presence to the vibrant city of Singapore. With a proven track record in Hong Kong, we offer
+				tailored solutions ranging from direct consultancy engagements to niche talent sourcing,
+				ensuring our clients' projects receive the attention and expertise they deserve. Our team
+				composes of delivery mindset individuals with extensive digital product experience to offer
+				invaluable insights and support to help drive our clients’ digital growth. With a hands-on
+				approach and boots on the ground mentality, Acument is known for our commitment to fast
+				response and a customer-centric approach that puts our clients success at the forefront.
+			</p>
+			<br />
+			<span class="close btn center-btn">Close</span>
+		</div>
+	</div>
+</section>
+
+
 <style lang="scss">
-    body {
-        font-family: Arial, sans-serif;
-        color: #333;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
+	//   @import '../scss/variables.scss';
+	//Variables
+
+	//_variables.scss
+$background-color: #bc2c2c;
+$text: #FFFFFF;
+$bulma-navbar-item-img-max-height: 2.5rem;
+
+// @import '../../node_modules/bulma/bulma';
+
+
+//font GreycliffCF
+@font-face {
+  font-family: 'GreycliffCF';
+  src: url('../lib/assets/font/Greycliff_Fonts/Greycliff_Fonts/greycliffcf-bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GreycliffCF';
+  src: url('../lib/assets/font/Greycliff_Fonts/Greycliff_Fonts/greycliffcf-demibold.otf') format('opentype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GreycliffCF';
+  src: url('../lib/assets/font/Greycliff_Fonts/Greycliff_Fonts/greycliffcf-extrabold.otf') format('opentype');
+  font-weight: 800; // Extrabold
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GreycliffCF';
+  src: url('../lib/assets/font/Greycliff_Fonts/Greycliff_Fonts/greycliffcf-heavy.otf') format('opentype');
+  font-weight: 900; // Heavy
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GreycliffCF';
+  src: url('../lib/assets/font/Greycliff_Fonts/Greycliff_Fonts/greycliffcf-light.otf') format('opentype');
+  font-weight: 300; // Light
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GreycliffCF';
+  src: url('../lib/assets/font/Greycliff_Fonts/Greycliff_Fonts/greycliffcf-medium.otf') format('opentype');
+  font-weight: 500; // Medium
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GreycliffCF';
+  src: url('../lib/assets/font/Greycliff_Fonts/Greycliff_Fonts/greycliffcf-regular.otf') format('opentype');
+  font-weight: normal; // 400
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GreycliffCF';
+  src: url('../lib/assets/font/Greycliff_Fonts/Greycliff_Fonts/greycliffcf-thin.otf') format('opentype');
+  font-weight: 100; // Thin
+  font-style: normal;
+}
+
+// @media (max-width: 1024px) { /* Adjust this media query based on your specific break-point */
+//   .navbar-menu {
+//     width: 100%; /* Ensures that the menu uses full width */
+//     justify-content: space-between; /* This will align navbar-brand to the left and navbar-end to the right */
+//   }
+//   .navbar {
+//     flex-wrap: nowrap; /* Prevents the navbar from wrapping */
+//   }
+//   .navbar-end {
+//     align-self: center; /* Aligns the button vertically */
+//   }
+// }
+
+*{
+  font-family: 'GreycliffCF', sans-serif;
+}
+
+.hero-body{
+  background-color: $background-color;
+  color: $text;
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 6em); /* Adjust height based on the header height */
+  overflow: hidden;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  $bulma-navbar-item-img-max-height: 2.5em;
+}
+
+.navbar-end {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1; /* Makes .navbar-end grow and take up any remaining space */
+}
+
+@media (max-width: 768px) {
+  .hero{
+    $hero-body-padding-small:0;
+    $hero-body-padding:0;
+  }
+}
+
+
+// index
+*{
+  border: 1px solid red; // Will show the boundary of each element
+}
+
+//index.scss
+body {
+  background-color: $background-color;
+  color: $text;
+  height: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  // overflow: hidden; // Prevents any scrolling
+}
+
+//navbar
+.navbar {
+  background-color: $background-color;
+  color: $text;
+  width: 100%;
+  padding: 1em;
+  height: 7em;
+  $bulma-navbar-item-img-max-height: 2.5em;
+}
+
+.navbar {
+  background-color: $background-color;
+  color: $text;
+  width: 100%;
+  padding: 1em;
+  height: 6em;  // Specifies the height of the navbar
+}
+
+.navbar-brand {
+  height: 100%;  // Ensures the navbar-brand container takes full height of the navbar
+  display: flex;
+  align-items: center;  // Centers the logo vertically within the navbar
+  width: 20vw;
+  min-width: 100px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-item{
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#nav-logo {
+  min-height:30px;
+  height: auto;  // Adjust this percentage as needed to scale the logo properly within the navbar
+  width: auto;  // Maintains the aspect ratio of the image
+  max-height: 3rem;
+}
+
+//text gradient
+.gradient-text {
+  background-image: linear-gradient(to right, #F9078E, #0BF5F1);
+  width: fit-content;  // Adjust based on desired width
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+//gradient colors
+$gradient-start: #F9078E; // Start color of the gradient
+$gradient-end: #0BF5F1; // End color of the gradient
+
+//gradient button
+.btn {
+  padding: 5px 20px;
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  border-radius: 20px;
+  background: linear-gradient(to right, $gradient-start, $gradient-end);
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    top: 1px;
+    bottom: 1px;
+    border-radius: 20px;
+    background-color: $background-color;
+    z-index: -1;
+    transition: 200ms;
+  }
+
+  &::after {
+    content: attr(data);
+    font-size: 16px;
+    background: linear-gradient(to left, $gradient-start, $gradient-end);
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: 200ms;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 0.5; // Adjusted to correct CSS value for opacity
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
 
-    div {
-        &.date {
-            p {
-                color: #ff0000;
-                font-size: 1.2em;
-                font-weight: bold;
-            }
-        }
+    &::after {
+      color: white;
     }
+  }
+}
 
-    h1, h2, h3, h4, h5, h6 {
-        color: #444;
-    }
+//hero title
+.hero-title {
+  font-family: 'GreycliffCF', sans-serif;
+  font-size: calc(12px + 5vw); //calc(12px + 1.5vw)
+  font-weight: 400;
+  text-align: center;
+  line-height: 1em;
+  z-index: 2;
+  position: relative;
 
-    p {
-        line-height: 1.6em;
-    }
+}
 
-    a {
-        color: #06c;
-        text-decoration: none;
+.bold {
+  font-weight: 800;
+}
 
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+.text-center {
+  text-align: center;
+}
+
+.center-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Aligns items to the start of the container vertically */
+  align-items: center; /* Centers items horizontally */
+  height: 100%; /* Ensures the div takes full height of the parent, adjust if necessary */
+}
+
+//splashscreen animations
+
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  background-color: #282626; // Initial solid background for logo
+}
+
+.logo-container img {
+  transition: opacity 2s ease;  // Smooth transition for opacity changes
+  opacity: 0;                   // Start with the logo invisible
+  width: 200px;
+  height: auto;
+}
+
+
+.gradient-screen {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 100vw;
+  height: 100;
+  display: none; // Initially hidden
+  flex-direction: column;
+  background-color: transparent; // Ensure gradient screen is transparent
+  translate: translateY(100%); // Start off-screen
+}
+
+
+
+* {
+  box-sizing: border-box; // Ensures padding and border are included in the width/height
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh; // Ensure the body and html are also taking the full viewport height
+  // overflow: hidden; // Prevent scrolling which can disrupt full-height displays
+  background-color:$background-color;
+}
+
+#splash-screen, .gradient-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw; // Full viewport width
+  height: 100vh; // Full viewport height
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden; // Prevents any overflow content from being visible
+}
+
+.gradient-part {
+  flex: 1; // Ensures each part stretches to fill the space evenly
+  width: 100%; // Full width of the container
+  background: linear-gradient(to right, #F9078E, #0BF5F1);
+  opacity: 0; // Initially invisible
+  transform: translateY(0%); // Start correctly positioned, no vertical offset
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+#hero-img{
+  width: 97.5%;
+  height: 60vh;
+  object-fit: cover; /* Ensure the image covers the entire area without distortion */
+  display: block;
+  margin: 0 auto; /* Center the image horizontally */
+  transform: translateY(-7%);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: calc(12px + 7vw);
+  }
+
+  #hero-img {
+    object-fit: contain; /* Changes from cover to contain to ensure the whole image is visible */
+    width: 100vw;
+    height: auto;
+    padding: 2.5em 0 0em 0; //padding: 2em 0 ;
+    scale: 1.2;
+  }
+
+  .hero-body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  .center-div{
+    padding: 0;
+    margin: 0;
+  }
+
+  .hero{
+    margin: 0;
+    padding: 0;
+    $hero-body-padding-small:0;
+    $hero-body-padding:0;
+  }
+}
+
+.full-height {
+  height: 100vh; // Ensures the element takes up the full viewport height
+}
+
+.scroll-snap{
+  scroll-snap-align: center; // Ensures the element snaps to the center of the viewport when scrolling
+  scroll-snap-type: y mandatory; // Ensures the element snaps to the center of the viewport when scrolling
+}
+
+.sub-heading {
+  font-size: calc(12px + 1vw);
+  text-align: center;
+  margin: 0.5em 0;
+}
+
+.sub-heading-border{
+  background-color: $gradient-start;
+}
+
+//modal 
+.text-container {
+  margin: 20px;
+  // .text-content {
+  //   // display: block; // Default to display block
+  // }
+
+  .text-button {
+    // display: none; // Default to display none
+    // background-color: #007BFF;
+    // color: white;
+    // border: none;
+    // padding: 10px 20px;
+    // border-radius: 5px;
+    // cursor: pointer;
+    margin-left: 0.5em;
+  }
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  // width: 90%;
+  // max-width: 600px;
+  width: 100vw;
+  height: 100vh;
+  background-color: $background-color;
+}
+
+.modal-content {
+  background-color: $background-color;
+  width:  85vw;  /* Adjusts width to fit within the modal */
+  max-width: 600px; /* Optional, for better readability on larger screens */
+  max-height: 100%; /* Ensures content does not exceed the modal */
+  // overflow: auto; /* Allows scrolling within the modal content if needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distributes space around items */
+  text-align: left;
+  margin: 2em auto;
+  padding: auto 3em;
+  font-size: calc(13px + 1vw);
+}
+
+//center close button
+.center-btn{
+  width: auto;
+  margin: auto;
+}
+
+.origin-text{
+  margin: auto;
+  width: 95%;
+}
+
+// Use for larger screens
+@media (min-width: 768px) {
+  .text-content {
+    display: block;
+  }
+  .text-button {
+    display: none;
+  }
+  .origin-text{
+    display: none;
+  }
+}
+
+// Use for smaller screens
+@media (max-width: 767px) {
+  .text-content {
+    display: none;
+  }
+  .text-button {
+    display: block;
+  }
+  .origin-text{
+    display: block;
+  }
+}
+
+// .about-us-container{
+//   display: flex;
+// }
+
+// .about-us-column{
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .about-us-row{
+//   display: flex;
+//   flex-direction: row;
+// }
+
+.text-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content; // Ensures the div takes full viewport height
+}
+
+.about-us-container {
+  display: flex;
+  width: 100%; // Adjust this as necessary
+  max-width: 1200px; // Ensures the container doesn't get too wide on large screens
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.titles-container {
+  flex: 1; // Takes up 1 part of the container
+  padding-right: 20px; // Adds space between the titles and the description
+}
+
+.description-container {
+  flex: 2; // Takes up 2 parts of the container, making it larger
+}
+
+h2, h3, p {
+  margin: 0; // Removes default margins
+  padding: 10px 0; // Adds vertical padding for spacing
+}
+
+h2 {
+  font-size: 24px; // Example size, adjust as needed
+}
+
+h3 {
+  font-size: 18px; // Example size, adjust as needed
+}
+
+p {
+  font-size: 16px; // Text size for paragraph
+  line-height: 1.5; // Line height for better readability
+}
+
 </style>
