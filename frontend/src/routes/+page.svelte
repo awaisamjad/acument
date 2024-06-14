@@ -1,6 +1,9 @@
 <script>
 	import JobPosting from '../lib/components/JobPosting.svelte';
-	</script>
+	import  Asset_5_300x  from '../lib/assets/acument_design/acument_design/logo/300ppi/Asset_5_300x.png';
+	import  Asset_10_300x  from '../lib/assets/acument_design/acument_design/logo/300ppi/Asset_10_300x.png';
+	
+</script>
 
 <div id="splash-screen">
 	<div class="logo-container">
@@ -8,7 +11,10 @@
 			src = "../lib/assets/acument_design/acument_design/logo/300ppi/Asset 5@300x.png"
 			alt="Company Logo"
 		/> -->
-		commented out
+		<img
+			src = "{Asset_5_300x}"
+			alt="Company Logo"
+		/>
 	</div>
 	<div class="gradient-screen">
 		<div class="gradient-part"></div>
@@ -28,7 +34,12 @@
 				alt="Logo"
 				id="nav-logo"
 			/> -->
-			commented out
+			<img
+				src="{Asset_10_300x}"
+				alt="Logo"
+				id="nav-logo"
+			/>
+			
 		</a>
 	</div>
 	<div class="navbar-end" style="justify-content: flex-end">
