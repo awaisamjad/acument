@@ -17,14 +17,19 @@
 		})
 			.then((response) => response.json())
 			.then((json_response) => {
+				console.log("Response JSON", json_response);
+				console.log("Response JSON Attributes", json_response.data[0].attributes.title);
+
 				const job = json_response.data[0];
 				const attributes = job.attributes;
 
-				title = attributes.Title;
-				category = attributes.Category;
-				date = attributes.Date;
-				location = attributes.Location;
-				rolesAndResponsibilities = attributes.Roles_and_Responsibilities;
+				title = attributes.title;
+				category = attributes.category;
+				date = attributes.date;
+				location = attributes.location;
+				rolesAndResponsibilities = attributes.roles_and_responsibilities;
+
+				console.log("title: ", title);
 			});
 	} catch (error) {
 		console.log('Job API Error');
