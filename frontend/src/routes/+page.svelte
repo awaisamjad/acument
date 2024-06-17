@@ -3,9 +3,6 @@
 	import Asset_5_300x from '/src/assets/Asset_5_300x.png';
 </script>
 
-<h1>Hello</h1>
-
-<JobPosting />
 
 <div id="splash-screen">
 	<div class="logo-container">
@@ -115,13 +112,15 @@
 			<span class="close btn center-btn">Close</span>
 		</div>
 	</div>
+	<JobPosting/>
+	
 </section>
 
 <style lang="scss">
 	//TODO Make the variables in another and imported
 	//_variables.scss
 
-	$background-color: #bc2c2c;
+	$background-color: #312929;
 
 	$text: #ffffff;
 
@@ -260,9 +259,9 @@
 
 	// index
 
-	* {
-		border: 1px solid red; // Will show the boundary of each element
-	}
+	// * {
+	// 	border: 1px solid red; // Will show the boundary of each element
+	// }
 
 	//index.scss
 
@@ -482,39 +481,39 @@
 
 	//splashscreen animations
 
-	#splash-screen {
-		position: fixed;
+	// #splash-screen {
+	// 	position: fixed;
 
-		top: 0;
+	// 	top: 0;
 
-		left: 0;
+	// 	left: 0;
 
-		width: 100%;
+	// 	width: 100%;
 
-		height: 100vh;
+	// 	height: 100vh;
 
-		display: flex;
+	// 	display: flex;
 
-		flex-direction: column;
+	// 	flex-direction: column;
 
-		justify-content: center;
+	// 	justify-content: center;
 
-		align-items: center;
+	// 	align-items: center;
 
-		z-index: 9999;
+	// 	z-index: 9999;
 
-		background-color: #282626; // Initial solid background for logo
-	}
+	// 	background-color: #282626; // Initial solid background for logo
+	// }
 
-	.logo-container img {
-		transition: opacity 2s ease; // Smooth transition for opacity changes
+	// .logo-container img {
+	// 	transition: opacity 2s ease; // Smooth transition for opacity changes
 
-		opacity: 0; // Start with the logo invisible
+	// 	opacity: 0; // Start with the logo invisible
 
-		width: 200px;
+	// 	width: 200px;
 
-		height: auto;
-	}
+	// 	height: auto;
+	// }
 
 	.gradient-screen {
 		position: absolute;
@@ -555,28 +554,28 @@
 		background-color: $background-color;
 	}
 
-	#splash-screen,
-	.gradient-screen {
-		display: flex;
+	// #splash-screen,
+	// .gradient-screen {
+	// 	display: flex;
 
-		flex-direction: column;
+	// 	flex-direction: column;
 
-		align-items: center;
+	// 	align-items: center;
 
-		justify-content: center;
+	// 	justify-content: center;
 
-		width: 100vw; // Full viewport width
+	// 	width: 100vw; // Full viewport width
 
-		height: 100vh; // Full viewport height
+	// 	height: 100vh; // Full viewport height
 
-		position: fixed;
+	// 	position: fixed;
 
-		top: 0;
+	// 	top: 0;
 
-		left: 0;
+	// 	left: 0;
 
-		overflow: hidden; // Prevents any overflow content from being visible
-	}
+	// 	overflow: hidden; // Prevents any overflow content from being visible
+	// }
 
 	.gradient-part {
 		flex: 1; // Ensures each part stretches to fill the space evenly
@@ -674,7 +673,7 @@
 		background-color: $gradient-start;
 	}
 
-	//modal
+	// //modal
 
 	.text-container {
 		margin: 20px;
@@ -814,13 +813,11 @@
 
 	// }
 
-	// .about-us-row{
+	.about-us-row {
+		display: flex;
 
-	// display: flex;
-
-	// flex-direction: row;
-
-	// }
+		flex-direction: row;
+	}
 
 	.text-content {
 		display: flex;
