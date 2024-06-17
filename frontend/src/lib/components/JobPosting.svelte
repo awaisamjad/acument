@@ -84,43 +84,71 @@
 </div>
 
 <style lang="scss">
-	body {
-		font-family: Arial, sans-serif;
-		color: #333;
-		background-color: #f4f4f4;
-		margin: 0;
-		padding: 0;
-	}
+	@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
 
-	div {
-		&.date {
-			p {
-				color: #ffbbbb;
-				font-size: 1.2em;
-				font-weight: bold;
-			}
-		}
-	}
+// Variables
+$primary-color: #4d6e8f;
+$secondary-color: #f2f2f2;
+$text-color: #333;
+$link-color: #6699cc;
+$link-hover-color: #336699;
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		color: #444;
-	}
+// Base Styles
+body {
+  font-family: 'Merriweather', serif;
+  color: $text-color;
+  line-height: 1.6;
+  background-color: $secondary-color;
+}
 
-	p {
-		line-height: 1.6em;
-	}
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  color: $primary-color;
+  font-weight: 700;
+  margin-bottom: 0.8em;
+  line-height: 1.4;
+}
 
-	a {
-		color: #06c;
-		text-decoration: none;
+// Paragraphs
+p {
+  line-height: 1.8;
+  margin-bottom: 1.2em;
+}
 
-		&:hover {
-			text-decoration: underline;
-		}
+// Links
+a {
+  color: $link-color;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+// Layout
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+// Buttons
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  background-color: $primary-color;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: darken($primary-color, 10%);
+  }
+
 	}
 </style>

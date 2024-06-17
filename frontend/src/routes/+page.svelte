@@ -113,7 +113,7 @@
 		</div>
 	</div>
 	<JobPosting/>
-	
+
 </section>
 
 <style lang="scss">
